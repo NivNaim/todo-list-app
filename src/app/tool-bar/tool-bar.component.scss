@@ -1,0 +1,37 @@
+.tool-bar-container {
+  width: 20%;
+  height: 78vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 14vh;
+  border-right: 1px solid #ddd;
+
+  ul {
+    height: 25vh;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    li {
+      display: flex;
+      gap: 3vh;
+      font-size: 18px;
+
+      &:hover,
+      &:hover a {
+        color: #1b77ff;
+        cursor: pointer;
+      }
+
+      a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+  }
+}
