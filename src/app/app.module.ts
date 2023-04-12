@@ -14,6 +14,7 @@ import { CompletedTodosComponent } from './completed-todos/completed-todos.compo
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomeComponent, SearchBarComponent, ToolBarComponent, InboxTodosComponent, TodayTodosComponent, UpcomingTodosComponent, CompletedTodosComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchBarComponent, ToolBarComponent, TodayTodosComponent, UpcomingTodosComponent, CompletedTodosComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
