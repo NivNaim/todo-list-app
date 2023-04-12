@@ -13,8 +13,17 @@ import { UpcomingTodosComponent } from './upcoming-todos/upcoming-todos.componen
 import { CompletedTodosComponent } from './completed-todos/completed-todos.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchBarComponent, ToolBarComponent, InboxTodosComponent, TodayTodosComponent, UpcomingTodosComponent, CompletedTodosComponent],
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchBarComponent, ToolBarComponent, TodayTodosComponent, UpcomingTodosComponent, CompletedTodosComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    SearchBarComponent,
+    ToolBarComponent,
+    InboxTodosComponent,
+    TodayTodosComponent,
+    UpcomingTodosComponent,
+    CompletedTodosComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
