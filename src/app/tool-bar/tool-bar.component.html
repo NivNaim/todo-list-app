@@ -1,5 +1,19 @@
 <div class="tool-bar-container">
   <ul class="tool-bar-features">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="fa fa-inbox"></i>
+      <a routerLink="/" routerLinkActive="active">Inbox</a>
+    </li>
+    <li routerLinkActive="active">
+      <i class="fas fa-calendar-day"></i>
+      <a routerLink="/today-todos">Today</a>
+    </li>
+    <li routerLinkActive="active">
+      <i class="fas fa-calendar-alt"></i>
+      <a routerLink="/upcoming-todos">Upcoming</a>
+    </li>
+    <li routerLinkActive="active">
+      <i class="fas fa-check-circle"></i>
     <li>
       <i routerLinkActive="active" class="fa fa-inbox"></i>
       <a routerLink="/inbox">Inbox</a>
