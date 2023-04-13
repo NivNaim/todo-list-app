@@ -9,7 +9,7 @@
   }
 
   main {
-    button[type="submit"] {
+    button {
       font-size: 22px;
       border: none;
       background-color: #fff;
@@ -17,9 +17,18 @@
       align-items: center;
       gap: 2vh;
 
+      span {
+        cursor: pointer;
+
+        &:hover {
+          color: #1b77ff;
+        }
+      }
+
       #add-icon {
         color: #1b77ff;
         font-size: 45px;
+        cursor: pointer;
       }
     }
   }
