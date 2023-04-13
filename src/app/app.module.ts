@@ -11,6 +11,7 @@ import { UpcomingTodosComponent } from './upcoming-todos/upcoming-todos.componen
 import { CompletedTodosComponent } from './completed-todos/completed-todos.component';
 import { TodayTodosComponent } from './today-todos/today-todos.component';
 import { RouterModule } from '@angular/router';
+import { AddTodoComponent } from './add-todo/add-todo.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     TodayTodosComponent,
     UpcomingTodosComponent,
     CompletedTodosComponent,
+    AddTodoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule],
   providers: [],
