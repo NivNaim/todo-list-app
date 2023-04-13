@@ -1,0 +1,26 @@
+.todos-container {
+  position: absolute;
+  left: 25%;
+  top: 15vh;
+  color: #1b77ff;
+
+  header {
+    font-size: 30px;
+  }
+
+  main {
+    button[type="submit"] {
+      font-size: 22px;
+      border: none;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 2vh;
+
+      #add-icon {
+        color: #1b77ff;
+        font-size: 45px;
+      }
+    }
+  }
+}
