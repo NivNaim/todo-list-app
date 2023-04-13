@@ -10,6 +10,7 @@ import { InboxTodosComponent } from './inbox-todos/inbox-todos.component';
 import { UpcomingTodosComponent } from './upcoming-todos/upcoming-todos.component';
 import { CompletedTodosComponent } from './completed-todos/completed-todos.component';
 import { TodayTodosComponent } from './today-todos/today-todos.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { TodayTodosComponent } from './today-todos/today-todos.component';
     UpcomingTodosComponent,
     CompletedTodosComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })
