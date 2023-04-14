@@ -22,4 +22,22 @@ form {
       height: 5vh;
     }
   }
+
+  button {
+    color: #fff;
+    background-color: #1b77ff;
+    display: flex;
+    justify-content: center;
+    padding: 1vh;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: #1b76ffa9;
+    }
+
+    &:disabled {
+      background-color: #1b76ff70;
+      cursor: not-allowed;
+    }
+  }
 }

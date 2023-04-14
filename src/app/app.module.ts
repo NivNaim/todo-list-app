@@ -12,6 +12,7 @@ import { CompletedTasksComponent } from './completed-tasks/completed-tasks.compo
 import { TodayTasksComponent } from './today-tasks/today-tasks.component';
 import { RouterModule } from '@angular/router';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
     CompletedTasksComponent,
     AddTaskComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule],
+  imports: [BrowserModule, AppRoutingModule, RouterModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
