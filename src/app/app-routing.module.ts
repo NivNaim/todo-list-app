@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UpcomingTodosComponent } from './upcoming-todos/upcoming-todos.component';
-import { CompletedTodosComponent } from './completed-todos/completed-todos.component';
-import { TodayTodosComponent } from './today-todos/today-todos.component';
-import { InboxTodosComponent } from './inbox-todos/inbox-todos.component';
-import { AddTodoComponent } from './add-todo/add-todo.component';
+import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
+import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
+import { TodayTasksComponent } from './today-tasks/today-tasks.component';
+import { InboxTasksComponent } from './inbox-tasks/inbox-tasks.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 const appRoutes: Routes = [
-  { path: '', component: InboxTodosComponent, pathMatch: 'full' },
-  { path: 'today-todos', component: TodayTodosComponent },
-  { path: 'upcoming-todos', component: UpcomingTodosComponent },
-  { path: 'completed-todos', component: CompletedTodosComponent },
-  { path: 'add-todo', component: AddTodoComponent },
+  { path: '', component: InboxTasksComponent, pathMatch: 'full' },
+  { path: 'today-todos', component: TodayTasksComponent },
+  { path: 'upcoming-todos', component: UpcomingTasksComponent },
+  { path: 'completed-todos', component: CompletedTasksComponent },
+  { path: 'add-todo', component: AddTaskComponent },
 ];
 
 @NgModule({
