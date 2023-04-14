@@ -45,18 +45,9 @@ button {
   display: flex;
   align-items: center;
   gap: 2vh;
+  cursor: pointer;
 
-  span {
-    cursor: pointer;
-
-    &:hover {
-      color: #1b77ff;
-    }
-  }
-
-  #add-icon {
+  &:hover {
     color: #1b77ff;
-    font-size: 45px;
-    cursor: pointer;
   }
 }

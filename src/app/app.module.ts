@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
-import { InboxTodosComponent } from './inbox-todos/inbox-todos.component';
-import { UpcomingTodosComponent } from './upcoming-todos/upcoming-todos.component';
-import { CompletedTodosComponent } from './completed-todos/completed-todos.component';
-import { TodayTodosComponent } from './today-todos/today-todos.component';
+import { InboxTasksComponent } from './inbox-tasks/inbox-tasks.component';
+import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
+import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
+import { TodayTasksComponent } from './today-tasks/today-tasks.component';
 import { RouterModule } from '@angular/router';
-import { AddTodoComponent } from './add-todo/add-todo.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +19,11 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
     HeaderComponent,
     SearchBarComponent,
     ToolBarComponent,
-    InboxTodosComponent,
-    TodayTodosComponent,
-    UpcomingTodosComponent,
-    CompletedTodosComponent,
-    AddTodoComponent,
+    InboxTasksComponent,
+    TodayTasksComponent,
+    UpcomingTasksComponent,
+    CompletedTasksComponent,
+    AddTaskComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule],
   providers: [],
