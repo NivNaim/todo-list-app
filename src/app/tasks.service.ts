@@ -5,6 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 export class TasksService {
   tasks: { id: string; title: string; date: string }[] = [];
 
+  constructor() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
   addTask(title: string, date: string) {
     const taskId = uuidv4();
     const task = {
@@ -13,5 +17,6 @@ export class TasksService {
       date: new Date(date).toISOString(),
     };
     this.tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }
