@@ -22,9 +22,7 @@ export class AddTaskComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     const title = form.value.title;
-    const dateArray = form.value.date.split('-').reverse();
-    const date = dateArray.join('/');
-    console.log(date);
+    const date = form.value.date;
     this.tasksService.addTask(title, date);
     console.log(this.tasksService.tasks);
 
