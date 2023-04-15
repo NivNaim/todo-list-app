@@ -13,6 +13,7 @@ import { TodayTasksComponent } from './today-tasks/today-tasks.component';
 import { RouterModule } from '@angular/router';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddTaskComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule, ReactiveFormsModule],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
