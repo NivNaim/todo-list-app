@@ -20,12 +20,11 @@ export class TasksService {
 
     const taskId = uuidv4();
     const momentDate = moment(date).format('DD/MM/YYYY');
-    console.log(momentDate);
+
     if (!momentDate) {
       throw new Error('Invalid date format.');
     }
-    console.log('formattedDate:', momentDate);
-    console.log('tasks before:', this.tasks);
+
     const task = {
       id: taskId,
       title: title,
@@ -33,7 +32,5 @@ export class TasksService {
     };
     this.tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
-
-    console.log('tasks after:', this.tasks);
   }
 }
