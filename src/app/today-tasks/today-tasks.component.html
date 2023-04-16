@@ -1,6 +1,16 @@
 <div class="todos-container">
   <header>Today</header>
-  <main></main>
+  <main>
+    <div class="tasks-list">
+      <div class="task-container" *ngFor="let task of tasks">
+        <input type="radio" [name]="task.id" (click)="onSelectTask()" #radio />
+        <div class="task-content">
+          <p>{{ task.title }}</p>
+          <p>{{ task.date }}</p>
+        </div>
+      </div>
+    </div>
+  </main>
   <footer>
     <form action="/add-todo">
       <button type="submit">
