@@ -17,7 +17,6 @@ export class TodayTasksComponent {
       const today = new Date().toLocaleDateString('en-GB');
       return task.date === today;
     });
-    console.log(this.tasks);
   }
 
   onSelectTask() {
