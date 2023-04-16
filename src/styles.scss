@@ -30,6 +30,22 @@ body {
 
   main {
     height: 80%;
+
+    .tasks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+
+      .task-container {
+        display: flex;
+        gap: 2vh;
+
+        input[type="radio"] {
+          transform: scale(1.4);
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   header,
