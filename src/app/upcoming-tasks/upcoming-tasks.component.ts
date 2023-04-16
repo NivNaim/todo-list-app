@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { TasksService } from '../tasks.service';
 
 @Component({
@@ -7,8 +7,7 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./upcoming-tasks.component.scss'],
 })
 export class UpcomingTasksComponent {
-  tasks: { id: string; title: string; date: string }[];
-  @ViewChild('radio', { static: false }) inputRadioElement: ElementRef;
+  tasks: { id: string; title: string; date: string; isCompleted: boolean }[];
 
   constructor(private tasksService: TasksService) {}
 
@@ -17,12 +16,11 @@ export class UpcomingTasksComponent {
       const today = new Date();
       const twoDaysFromNow = new Date(today.setDate(today.getDate() + 2));
       const formattedDate = twoDaysFromNow.toLocaleDateString('en-GB');
-      return task.date < formattedDate;
+      return task.date < formattedDate && !task.isCompleted;
     });
   }
 
-  onSelectTask() {
-    this.inputRadioElement.nativeElement.checked =
-      !this.inputRadioElement.nativeElement.checked;
+  onSelectTask(isChecked: boolean) {
+    console.log(isChecked);
   }
 }
