@@ -1,6 +1,16 @@
 <div class="todos-container">
   <header>Upcoming</header>
-  <main></main>
+  <main>
+    <div class="tasks-list">
+      <div class="task-container" *ngFor="let task of tasks">
+        <input type="checkbox" (click)="onSelectTask($event.target.checked)" />
+        <div class="task-content">
+          <p>{{ task.title }}</p>
+          <p>{{ task.date }}</p>
+        </div>
+      </div>
+    </div>
+  </main>
   <footer>
     <form action="/add-todo">
       <button type="submit">

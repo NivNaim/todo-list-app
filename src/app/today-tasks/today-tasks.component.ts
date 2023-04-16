@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { TasksService } from '../tasks.service';
 
 @Component({
@@ -7,21 +7,18 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./today-tasks.component.scss'],
 })
 export class TodayTasksComponent {
-  tasks: { id: string; title: string; date: string }[];
-  @ViewChild('radio', { static: false }) inputRadioElement: ElementRef;
+  tasks: { id: string; title: string; date: string; isCompleted: boolean }[];
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
     this.tasks = this.tasksService.tasks.filter((task) => {
       const today = new Date().toLocaleDateString('en-GB');
-      return task.date === today;
+      return task.date === today && !task.isCompleted;
     });
-    console.log(this.tasks);
   }
 
-  onSelectTask() {
-    this.inputRadioElement.nativeElement.checked =
-      !this.inputRadioElement.nativeElement.checked;
+  onSelectTask(isChecked: boolean) {
+    console.log(isChecked);
   }
 }
