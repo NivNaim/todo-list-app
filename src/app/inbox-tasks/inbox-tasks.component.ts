@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TasksService } from '../tasks.service';
 
 @Component({
@@ -8,10 +8,16 @@ import { TasksService } from '../tasks.service';
 })
 export class InboxTasksComponent implements OnInit {
   tasks: { id: string; title: string; date: string }[];
+  @ViewChild('radio', { static: false }) inputRadioElement: ElementRef;
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
     this.tasks = this.tasksService.tasks;
+  }
+
+  onSelectTask() {
+    this.inputRadioElement.nativeElement.checked =
+      !this.inputRadioElement.nativeElement.checked;
   }
 }
