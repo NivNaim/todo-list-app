@@ -1,0 +1,43 @@
+form {
+  position: absolute;
+  left: 25%;
+  top: 15vh;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  gap: 5vh;
+
+  .field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+
+    label {
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    input {
+      font-size: 18px;
+      height: 5vh;
+    }
+  }
+
+  button {
+    color: #fff;
+    background-color: #1b77ff;
+    display: flex;
+    justify-content: center;
+    padding: 1vh;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: #1b76ffa9;
+    }
+
+    &:disabled {
+      background-color: #1b76ff70;
+      cursor: not-allowed;
+    }
+  }
+}

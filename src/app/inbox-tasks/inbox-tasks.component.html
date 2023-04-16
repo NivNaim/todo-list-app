@@ -1,0 +1,18 @@
+<div class="todos-container">
+  <header>Inbox</header>
+  <main>
+    <ul>
+      <li *ngFor="let task of tasks">
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.date }}</p>
+      </li>
+    </ul>
+  </main>
+  <footer>
+    <form action="/add-todo">
+      <button type="submit">
+        <i class="fa-regular fa-plus"></i> <span>Add Task</span>
+      </button>
+    </form>
+  </footer>
+</div>

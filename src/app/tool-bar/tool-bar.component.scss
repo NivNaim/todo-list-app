@@ -16,6 +16,14 @@
     align-items: flex-start;
     justify-content: space-around;
 
+    .active {
+      color: #1b77ff;
+
+      a {
+        color: #1b77ff;
+      }
+    }
+
     li {
       display: flex;
       gap: 3vh;
