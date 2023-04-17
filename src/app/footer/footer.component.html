@@ -1,0 +1,21 @@
+<footer>
+  <form action="/add-todo">
+    <button class="add-task" type="submit">
+      <i class="fa-regular fa-plus"></i> <span>Add Task</span>
+    </button>
+  </form>
+  <button
+    class="mark-as-completed"
+    (click)="onMarkAsComplete()"
+    [disabled]="!isCheckedMode"
+  >
+    <i class="fas fa-check-circle"></i><span>Mark As Completed</span>
+  </button>
+  <button
+    class="delete-tasks"
+    (click)="onDeleteTasks()"
+    [disabled]="!isCheckedMode"
+  >
+    <i class="fa-sharp fa-solid fa-trash"></i><span>Delete</span>
+  </button>
+</footer>

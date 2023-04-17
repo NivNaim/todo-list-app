@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DatePipe } from '@angular/common';
     UpcomingTasksComponent,
     CompletedTasksComponent,
     AddTaskComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule, ReactiveFormsModule],
   providers: [DatePipe],

@@ -39,31 +39,46 @@ body {
       .task-container {
         display: flex;
         gap: 2vh;
+        align-items: center;
 
         input[type="checkbox"] {
           transform: scale(1.4);
           cursor: pointer;
         }
+
+        .fa-trash {
+          cursor: pointer;
+
+          &:hover {
+            color: #1b77ff;
+          }
+        }
       }
     }
   }
 
-  header,
-  footer {
+  header {
     height: 10%;
   }
 }
 
 button {
-  font-size: 22px;
-  border: none;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 2vh;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+  // height: fit-content;
+  // border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  padding: 1vh;
+  border: none;
+  gap: 1vh;
+  cursor: pointer;
+  background-color: #fff;
 
-  &:hover {
-    color: #1b77ff;
+  &:disabled {
+    cursor: not-allowed;
   }
 }

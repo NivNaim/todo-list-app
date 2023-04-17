@@ -7,14 +7,20 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./today-tasks.component.scss'],
 })
 export class TodayTasksComponent {
-  tasks: { id: string; title: string; date: string; isCompleted: boolean }[];
+  tasks: {
+    id: string;
+    title: string;
+    date: string;
+    isChecked: boolean;
+    isCompleted: boolean;
+  }[];
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
     this.tasks = this.tasksService.tasks.filter((task) => {
       const today = new Date().toLocaleDateString('en-GB');
-      return task.date === today && !task.isCompleted;
+      return task.date === today && !task.isChecked;
     });
   }
 
