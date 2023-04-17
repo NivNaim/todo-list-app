@@ -7,7 +7,13 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./upcoming-tasks.component.scss'],
 })
 export class UpcomingTasksComponent {
-  tasks: { id: string; title: string; date: string; isCompleted: boolean }[];
+  tasks: {
+    id: string;
+    title: string;
+    date: string;
+    isChecked: boolean;
+    isCompleted: boolean;
+  }[];
 
   constructor(private tasksService: TasksService) {}
 
@@ -16,7 +22,7 @@ export class UpcomingTasksComponent {
       const today = new Date();
       const twoDaysFromNow = new Date(today.setDate(today.getDate() + 2));
       const formattedDate = twoDaysFromNow.toLocaleDateString('en-GB');
-      return task.date < formattedDate && !task.isCompleted;
+      return task.date < formattedDate && !task.isChecked;
     });
   }
 

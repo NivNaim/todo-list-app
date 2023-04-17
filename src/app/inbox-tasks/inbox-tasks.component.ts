@@ -7,17 +7,26 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./inbox-tasks.component.scss'],
 })
 export class InboxTasksComponent implements OnInit {
-  tasks: { id: string; title: string; date: string; isCompleted: boolean }[];
+  tasks: {
+    id: string;
+    title: string;
+    date: string;
+    isChecked: boolean;
+    isCompleted: boolean;
+  }[];
+  isCheckedMode = false;
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
-    this.tasks = this.tasksService.tasks.filter((task) => !task.isCompleted);
+    this.tasks = this.tasksService.tasks.filter(
+      (task) => !task.isChecked && !task.isCompleted
+    );
   }
 
   onSelectTask(isChecked: boolean, taskId: string) {
     const task = this.tasksService.findTaskById(taskId);
-    task.isCompleted = isChecked;
-    this.tasksService.saveTasks();
+    task.isChecked = isChecked;
+    this.isCheckedMode = this.tasksService.isCheckedMode();
   }
 }

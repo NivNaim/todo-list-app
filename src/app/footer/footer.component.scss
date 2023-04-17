@@ -1,0 +1,51 @@
+footer {
+  display: flex;
+  gap: 5vh;
+
+  form {
+    height: fit-content;
+
+    button {
+      font-size: 22px;
+
+      .fa-plus {
+        color: #1b77ff;
+      }
+
+      &:hover {
+        color: #1b77ff;
+      }
+    }
+  }
+
+  button {
+    height: fit-content;
+    border-radius: 5px;
+  }
+
+  button.mark-as-completed {
+    color: #fff;
+    background-color: #04aa6d;
+
+    &:hover {
+      background-color: #04aa6dbb;
+    }
+
+    &:disabled {
+      background-color: #04aa6d62;
+    }
+  }
+
+  button.delete-tasks {
+    color: #fff;
+    background-color: #f44336;
+
+    &:hover {
+      background-color: #f44336ae;
+    }
+
+    &:disabled {
+      background-color: #f4433661;
+    }
+  }
+}

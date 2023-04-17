@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TasksService } from '../tasks.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-completed-tasks',
@@ -7,15 +8,21 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./completed-tasks.component.scss'],
 })
 export class CompletedTasksComponent {
-  tasks: { id: string; title: string; date: string; isCompleted: boolean }[];
+  tasks: {
+    id: string;
+    title: string;
+    date: string;
+    isChecked: boolean;
+    isCompleted: boolean;
+  }[];
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService, private router: Router) {}
 
   ngOnInit() {
     this.tasks = this.tasksService.tasks.filter((task) => task.isCompleted);
   }
 
-  onSelectTask(isChecked: boolean, taskId: string) {
-    console.log(isChecked);
+  onDeleteTask(taskId: string) {
+    this.tasksService.deleteTask(taskId);
   }
 }
