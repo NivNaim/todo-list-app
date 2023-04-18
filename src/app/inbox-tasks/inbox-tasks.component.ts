@@ -14,19 +14,15 @@ export class InboxTasksComponent implements OnInit {
     isChecked: boolean;
     isCompleted: boolean;
   }[];
-  isCheckedMode = false;
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
-    this.tasks = this.tasksService.tasks.filter(
-      (task) => !task.isChecked && !task.isCompleted
-    );
+    this.tasksService.resetTask();
+    this.tasks = this.tasksService.tasks.filter((task) => !task.isCompleted);
   }
 
   onSelectTask(isChecked: boolean, taskId: string) {
-    const task = this.tasksService.findTaskById(taskId);
-    task.isChecked = isChecked;
-    this.isCheckedMode = this.tasksService.isCheckedMode();
+    this.tasksService.selectTask(isChecked, taskId);
   }
 }

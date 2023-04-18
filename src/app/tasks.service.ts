@@ -11,6 +11,7 @@ export class TasksService {
     isChecked: boolean;
     isCompleted: boolean;
   }[];
+  isCheckedModeFlag = false;
 
   constructor() {
     this.tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -43,17 +44,19 @@ export class TasksService {
     this.saveTasks();
   }
 
+  saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
   deleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
     this.saveTasks();
   }
 
-  refreshWindow() {
-    window.location.reload();
-  }
-
-  saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  selectTask(isChecked: boolean, id: string) {
+    const task = this.findTaskById(id);
+    task.isChecked = isChecked;
+    this.isCheckedModeFlag = this.isCheckedMode();
   }
 
   findTaskById(id: string) {
@@ -62,8 +65,6 @@ export class TasksService {
 
   isCheckedMode() {
     const tasks = this.tasks.filter((task) => task.isChecked);
-    console.log(tasks);
-    console.log(tasks.length !== 0);
     return tasks.length !== 0;
   }
 
@@ -76,5 +77,14 @@ export class TasksService {
     });
 
     this.saveTasks();
+  }
+
+  resetTask() {
+    this.tasks.forEach((task) => (task.isChecked = false));
+    this.isCheckedModeFlag = false;
+  }
+
+  refreshWindow() {
+    window.location.reload();
   }
 }

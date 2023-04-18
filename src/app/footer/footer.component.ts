@@ -7,9 +7,7 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  @Input() isCheckedMode = false;
-
-  constructor(private tasksService: TasksService) {}
+  constructor(public tasksService: TasksService) {}
 
   onMarkAsComplete() {
     this.tasksService.MarkAsComplete();

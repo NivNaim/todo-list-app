@@ -18,6 +18,7 @@ export class UpcomingTasksComponent {
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
+    this.tasksService.resetTask();
     this.tasks = this.tasksService.tasks.filter((task) => {
       const today = new Date();
       const twoDaysFromNow = new Date(today.setDate(today.getDate() + 2));
@@ -26,7 +27,7 @@ export class UpcomingTasksComponent {
     });
   }
 
-  onSelectTask(isChecked: boolean) {
-    console.log(isChecked);
+  onSelectTask(isChecked: boolean, taskId: string) {
+    this.tasksService.selectTask(isChecked, taskId);
   }
 }

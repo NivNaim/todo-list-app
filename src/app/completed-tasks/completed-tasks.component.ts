@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TasksService } from '../tasks.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-completed-tasks',
@@ -16,13 +15,16 @@ export class CompletedTasksComponent {
     isCompleted: boolean;
   }[];
 
-  constructor(private tasksService: TasksService, private router: Router) {}
+  constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
     this.tasks = this.tasksService.tasks.filter((task) => task.isCompleted);
   }
 
   onDeleteTask(taskId: string) {
-    this.tasksService.deleteTask(taskId);
+    const task = this.tasksService.findTaskById(taskId);
+    task.isCompleted = false;
+    this.tasksService.saveTasks();
+    this.tasksService.refreshWindow();
   }
 }

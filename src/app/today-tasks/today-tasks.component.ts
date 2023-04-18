@@ -14,17 +14,19 @@ export class TodayTasksComponent {
     isChecked: boolean;
     isCompleted: boolean;
   }[];
+  isCheckedMode = false;
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
+    this.tasksService.resetTask();
     this.tasks = this.tasksService.tasks.filter((task) => {
       const today = new Date().toLocaleDateString('en-GB');
       return task.date === today && !task.isChecked;
     });
   }
 
-  onSelectTask(isChecked: boolean) {
-    console.log(isChecked);
+  onSelectTask(isChecked: boolean, taskId: string) {
+    this.tasksService.selectTask(isChecked, taskId);
   }
 }

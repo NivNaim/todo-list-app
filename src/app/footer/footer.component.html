@@ -7,14 +7,14 @@
   <button
     class="mark-as-completed"
     (click)="onMarkAsComplete()"
-    [disabled]="!isCheckedMode"
+    [disabled]="!tasksService.isCheckedModeFlag"
   >
     <i class="fas fa-check-circle"></i><span>Mark As Completed</span>
   </button>
   <button
     class="delete-tasks"
     (click)="onDeleteTasks()"
-    [disabled]="!isCheckedMode"
+    [disabled]="!tasksService.isCheckedModeFlag"
   >
     <i class="fa-sharp fa-solid fa-trash"></i><span>Delete</span>
   </button>
