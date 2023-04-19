@@ -47,8 +47,12 @@ export class TasksService {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
-  deleteTask(id: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+  deleteTasks(ids: string[]) {
+    if (ids.length === 0) {
+      return;
+    }
+
+    this.tasks = this.tasks.filter((task) => !ids.includes(task.id));
     this.tasksChanged.next(this.tasks.slice());
     this.saveTasks();
   }
@@ -69,13 +73,27 @@ export class TasksService {
   }
 
   MarkAsComplete() {
-    this.tasks.forEach((task) => {
-      if (task.isChecked) {
+    const completedTasks = this.tasks.filter((task) => task.isChecked);
+
+    if (completedTasks.length > 0) {
+      completedTasks.forEach((task) => {
         task.isCompleted = true;
         task.isChecked = false;
-      }
-    });
+      });
 
+      this.tasksChanged.next(this.tasks.slice());
+      this.saveTasks();
+    }
+  }
+
+  changeToUncompleted(id: string) {
+    const task = this.findTaskById(id);
+    if (!task || !task.isCompleted) {
+      return;
+    }
+    task.isCompleted = false;
+
+    this.tasksChanged.next(this.tasks.slice());
     this.saveTasks();
   }
 
@@ -89,9 +107,5 @@ export class TasksService {
       task.title.toLowerCase().startsWith(inputValue)
     );
     this.tasksChanged.next(filterTasks.slice());
-  }
-
-  refreshWindow() {
-    window.location.reload();
   }
 }

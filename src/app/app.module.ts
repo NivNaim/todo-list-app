@@ -7,13 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { InboxTasksComponent } from './inbox-tasks/inbox-tasks.component';
-import { UpcomingTasksComponent } from './upcoming-tasks/upcoming-tasks.component';
-import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
-import { TodayTasksComponent } from './today-tasks/today-tasks.component';
 import { RouterModule } from '@angular/router';
-import { AddTaskComponent } from './add-task/add-task.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FooterComponent } from './footer/footer.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,11 +18,6 @@ import { FooterComponent } from './footer/footer.component';
     SearchBarComponent,
     ToolBarComponent,
     InboxTasksComponent,
-    TodayTasksComponent,
-    UpcomingTasksComponent,
-    CompletedTasksComponent,
-    AddTaskComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

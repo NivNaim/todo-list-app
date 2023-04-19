@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { Task } from '../task.model';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-completed-tasks',
@@ -26,10 +26,11 @@ export class CompletedTasksComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onDeleteTask(taskId: string) {
-    const task = this.tasksService.findTaskById(taskId);
-    task.isCompleted = false;
-    this.tasksService.saveTasks();
-    this.tasksService.refreshWindow();
+  onChangeToUncompleted(taskId: string) {
+    this.subscription = this.tasksService.tasksChanged
+      .pipe(take(1))
+      .subscribe((tasks: Task[]) => {
+        this.tasksService.changeToUncompleted(taskId);
+      });
   }
 }
