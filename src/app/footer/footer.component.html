@@ -1,9 +1,7 @@
 <footer>
-  <form action="/add-todo">
-    <button class="add-task" type="submit">
-      <i class="fa-regular fa-plus"></i> <span>Add Task</span>
-    </button>
-  </form>
+  <button class="add-task" type="submit" (click)="onAddTask()">
+    <i class="fa-regular fa-plus"></i> <span>Add Task</span>
+  </button>
   <button
     class="mark-as-completed"
     (click)="onMarkAsComplete()"

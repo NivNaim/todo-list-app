@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
+import { BehaviorSubject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
+import { Task } from './task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
-  tasks: {
-    id: string;
-    title: string;
-    date: string;
-    isChecked: boolean;
-    isCompleted: boolean;
-  }[];
+  tasksChanged = new BehaviorSubject<Task[]>([]);
+  private tasks: Task[];
   isCheckedModeFlag = false;
 
   constructor() {
@@ -18,6 +15,7 @@ export class TasksService {
     if (!this.tasks) {
       this.tasks = [];
     }
+    this.tasksChanged.next(this.tasks.slice());
   }
 
   addTask(title: string, date: string) {
@@ -41,6 +39,7 @@ export class TasksService {
     };
 
     this.tasks.push(task);
+    this.tasksChanged.next(this.tasks.slice());
     this.saveTasks();
   }
 
@@ -50,6 +49,7 @@ export class TasksService {
 
   deleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.tasksChanged.next(this.tasks.slice());
     this.saveTasks();
   }
 
@@ -82,6 +82,13 @@ export class TasksService {
   resetTask() {
     this.tasks.forEach((task) => (task.isChecked = false));
     this.isCheckedModeFlag = false;
+  }
+
+  FilterTasksByInput(inputValue: string) {
+    const filterTasks = this.tasks.filter((task) =>
+      task.title.toLowerCase().startsWith(inputValue)
+    );
+    this.tasksChanged.next(filterTasks.slice());
   }
 
   refreshWindow() {

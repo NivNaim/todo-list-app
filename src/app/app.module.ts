@@ -12,8 +12,7 @@ import { CompletedTasksComponent } from './completed-tasks/completed-tasks.compo
 import { TodayTasksComponent } from './today-tasks/today-tasks.component';
 import { RouterModule } from '@angular/router';
 import { AddTaskComponent } from './add-task/add-task.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -29,8 +28,14 @@ import { FooterComponent } from './footer/footer.component';
     AddTaskComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule, ReactiveFormsModule],
-  providers: [DatePipe],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
