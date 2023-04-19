@@ -3,7 +3,7 @@
   <main>
     <div class="tasks-list">
       <div class="task-container" *ngFor="let task of tasks">
-        <button (click)="onDeleteTask(task.id)">
+        <button (click)="onChangeToUncompleted(task.id)">
           <i class="fa-sharp fa-solid fa-trash"></i>
         </button>
         <div class="task-content">

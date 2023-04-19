@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TasksService } from '../tasks.service';
+import { TasksService } from '../../tasks.service';
 import { Router } from '@angular/router';
-import { Task } from '../task.model';
+import { Task } from '../../task.model';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,21 +15,18 @@ export class FooterComponent {
   constructor(public tasksService: TasksService, private router: Router) {}
 
   onMarkAsComplete() {
-    this.tasksService.MarkAsComplete();
-    this.tasksService.saveTasks();
-    this.tasksService.refreshWindow();
+    this.tasksService.tasksChanged.subscribe((tasks: Task[]) => {
+      this.tasksService.MarkAsComplete();
+    });
   }
 
   onDeleteTasks() {
-    this.tasksService.tasksChanged.subscribe((task: Task[]) => {
-      task.forEach((task) => {
-        if (task.isChecked) {
-          this.tasksService.deleteTask(task.id);
-        }
-      });
+    this.tasksService.tasksChanged.subscribe((tasks: Task[]) => {
+      const idsToDelete = tasks
+        .filter((task) => task.isChecked)
+        .map((task) => task.id);
+      this.tasksService.deleteTasks(idsToDelete);
     });
-    this.tasksService.saveTasks();
-    this.tasksService.refreshWindow();
   }
 
   onAddTask() {
