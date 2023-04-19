@@ -2,19 +2,15 @@ footer {
   display: flex;
   gap: 5vh;
 
-  form {
-    height: fit-content;
+  button {
+    font-size: 22px;
 
-    button {
-      font-size: 22px;
+    .fa-plus {
+      color: #1b77ff;
+    }
 
-      .fa-plus {
-        color: #1b77ff;
-      }
-
-      &:hover {
-        color: #1b77ff;
-      }
+    &:hover {
+      color: #1b77ff;
     }
   }
 

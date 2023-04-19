@@ -1,32 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
+import { Task } from '../task.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inbox-tasks',
   templateUrl: './inbox-tasks.component.html',
-  styleUrls: ['./inbox-tasks.component.scss'],
 })
-export class InboxTasksComponent implements OnInit {
-  tasks: {
-    id: string;
-    title: string;
-    date: string;
-    isChecked: boolean;
-    isCompleted: boolean;
-  }[];
-  isCheckedMode = false;
+export class InboxTasksComponent implements OnInit, OnDestroy {
+  tasks: Task[];
+  subscription: Subscription;
 
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
-    this.tasks = this.tasksService.tasks.filter(
-      (task) => !task.isChecked && !task.isCompleted
+    this.subscription = this.tasksService.tasksChanged.subscribe(
+      (tasks: Task[]) => {
+        this.tasksService.resetTask();
+        this.tasks = tasks.filter((task) => !task.isCompleted);
+      }
     );
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   onSelectTask(isChecked: boolean, taskId: string) {
-    const task = this.tasksService.findTaskById(taskId);
-    task.isChecked = isChecked;
-    this.isCheckedMode = this.tasksService.isCheckedMode();
+    this.tasksService.selectTask(isChecked, taskId);
   }
 }

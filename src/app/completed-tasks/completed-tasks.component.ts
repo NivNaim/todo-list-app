@@ -1,28 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
-import { Router } from '@angular/router';
+import { Task } from '../task.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-completed-tasks',
   templateUrl: './completed-tasks.component.html',
   styleUrls: ['./completed-tasks.component.scss'],
 })
-export class CompletedTasksComponent {
-  tasks: {
-    id: string;
-    title: string;
-    date: string;
-    isChecked: boolean;
-    isCompleted: boolean;
-  }[];
+export class CompletedTasksComponent implements OnInit, OnDestroy {
+  tasks: Task[];
+  subscription: Subscription;
 
-  constructor(private tasksService: TasksService, private router: Router) {}
+  constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
-    this.tasks = this.tasksService.tasks.filter((task) => task.isCompleted);
+    this.subscription = this.tasksService.tasksChanged.subscribe(
+      (tasks: Task[]) => {
+        this.tasks = tasks.filter((task) => task.isCompleted);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onDeleteTask(taskId: string) {
-    this.tasksService.deleteTask(taskId);
+    const task = this.tasksService.findTaskById(taskId);
+    task.isCompleted = false;
+    this.tasksService.saveTasks();
+    this.tasksService.refreshWindow();
   }
 }

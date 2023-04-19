@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
+import { BehaviorSubject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
+import { Task } from './task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
-  tasks: {
-    id: string;
-    title: string;
-    date: string;
-    isChecked: boolean;
-    isCompleted: boolean;
-  }[];
+  tasksChanged = new BehaviorSubject<Task[]>([]);
+  private tasks: Task[];
+  isCheckedModeFlag = false;
 
   constructor() {
     this.tasks = JSON.parse(localStorage.getItem('tasks'));
     if (!this.tasks) {
       this.tasks = [];
     }
+    this.tasksChanged.next(this.tasks.slice());
   }
 
   addTask(title: string, date: string) {
@@ -40,20 +39,24 @@ export class TasksService {
     };
 
     this.tasks.push(task);
+    this.tasksChanged.next(this.tasks.slice());
     this.saveTasks();
-  }
-
-  deleteTask(id: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
-    this.saveTasks();
-  }
-
-  refreshWindow() {
-    window.location.reload();
   }
 
   saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  deleteTask(id: string) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.tasksChanged.next(this.tasks.slice());
+    this.saveTasks();
+  }
+
+  selectTask(isChecked: boolean, id: string) {
+    const task = this.findTaskById(id);
+    task.isChecked = isChecked;
+    this.isCheckedModeFlag = this.isCheckedMode();
   }
 
   findTaskById(id: string) {
@@ -62,8 +65,6 @@ export class TasksService {
 
   isCheckedMode() {
     const tasks = this.tasks.filter((task) => task.isChecked);
-    console.log(tasks);
-    console.log(tasks.length !== 0);
     return tasks.length !== 0;
   }
 
@@ -76,5 +77,21 @@ export class TasksService {
     });
 
     this.saveTasks();
+  }
+
+  resetTask() {
+    this.tasks.forEach((task) => (task.isChecked = false));
+    this.isCheckedModeFlag = false;
+  }
+
+  FilterTasksByInput(inputValue: string) {
+    const filterTasks = this.tasks.filter((task) =>
+      task.title.toLowerCase().startsWith(inputValue)
+    );
+    this.tasksChanged.next(filterTasks.slice());
+  }
+
+  refreshWindow() {
+    window.location.reload();
   }
 }

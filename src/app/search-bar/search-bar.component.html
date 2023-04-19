@@ -11,6 +11,8 @@
       name="search-todos"
       id="search-todos"
       placeholder="Search"
+      [(ngModel)]="inputValue"
+      (input)="onInputChange()"
     />
     <button type="submit"><i class="fa fa-search" id="search-icon"></i></button>
   </form>

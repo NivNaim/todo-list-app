@@ -24,8 +24,6 @@ export class AddTaskComponent implements OnInit {
     const title = form.value.title;
     const date = form.value.date;
     this.tasksService.addTask(title, date);
-    console.log(this.tasksService.tasks);
-
     this.router.navigate(['/']);
   }
 }
