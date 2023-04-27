@@ -16,7 +16,7 @@ export class FooterComponent {
 
   onMarkAsComplete() {
     this.tasksService.tasksChanged.subscribe((tasks: Task[]) => {
-      this.tasksService.MarkAsComplete();
+      this.tasksService.markAsComplete();
     });
   }
 

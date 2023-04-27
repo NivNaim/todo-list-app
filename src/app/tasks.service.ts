@@ -72,7 +72,7 @@ export class TasksService {
     return tasks.length !== 0;
   }
 
-  MarkAsComplete() {
+  markAsComplete() {
     const completedTasks = this.tasks.filter((task) => task.isChecked);
 
     if (completedTasks.length > 0) {
@@ -102,7 +102,7 @@ export class TasksService {
     this.isCheckedModeFlag = false;
   }
 
-  FilterTasksByInput(inputValue: string) {
+  filterTasksByInput(inputValue: string) {
     const filterTasks = this.tasks.filter((task) =>
       task.title.toLowerCase().startsWith(inputValue)
     );
