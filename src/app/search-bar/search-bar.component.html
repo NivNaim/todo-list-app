@@ -1,19 +1,8 @@
 <div class="search-bar-container">
-  <img
-    src="../../assets/icons/write.png"
-    alt="write-icon"
-    width="50"
-    height="50"
-  />
+  <img src="../../assets/icons/write.png" alt="write-icon" width="50" height="50" />
   <form>
-    <input
-      type="text"
-      name="search-todos"
-      id="search-todos"
-      placeholder="Search"
-      [(ngModel)]="inputValue"
-      (input)="onInputChange()"
-    />
+    <input type="text" name="search-todos" id="search-todos" placeholder="Search" [(ngModel)]="inputValue"
+      (input)="onInputChange()" />
     <button type="submit"><i class="fa fa-search" id="search-icon"></i></button>
   </form>
 </div>
