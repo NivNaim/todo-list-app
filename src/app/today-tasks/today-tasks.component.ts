@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { Task } from '../task.model';
-import { Subscription } from 'rxjs';
+import { Subscription, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-today-tasks',
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class TodayTasksComponent implements OnInit, OnDestroy {
   tasks: Task[];
   subscription: Subscription;
+  isLoading = false;
 
   constructor(private tasksService: TasksService) {}
 
@@ -23,6 +24,16 @@ export class TodayTasksComponent implements OnInit, OnDestroy {
         });
       }
     );
+
+    this.subscription = this.tasksService.searchInput
+      .pipe(debounceTime(300))
+      .subscribe((value) => {
+        this.isLoading = true;
+        this.tasksService.filterTasks(value);
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 1000);
+      });
   }
 
   ngOnDestroy(): void {

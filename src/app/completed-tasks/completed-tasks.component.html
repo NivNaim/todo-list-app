@@ -1,7 +1,7 @@
 <div class="todos-container completed-task-container">
   <header>Completed</header>
   <main>
-    <div class="tasks-list">
+    <div class="tasks-list" *ngIf="!isLoading">
       <div class="task-container" *ngFor="let task of tasks">
         <button (click)="onChangeToUncompleted(task.id)">
           <i class="fa-sharp fa-solid fa-trash"></i>
@@ -12,5 +12,6 @@
         </div>
       </div>
     </div>
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
   </main>
 </div>
