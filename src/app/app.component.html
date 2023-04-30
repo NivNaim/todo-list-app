@@ -1,5 +1,5 @@
 <app-header />
-<div class="home-container">
+<div class="home-container" [id]="isDarkMode ? 'dark-mode' : ''">
   <app-search-bar />
   <app-tool-bar />
   <router-outlet />

@@ -9,6 +9,7 @@ import { Task } from './task.model';
 export class TasksService {
   tasksChanged = new BehaviorSubject<Task[]>([]);
   searchInput = new Subject<string>();
+  isDarkModeChange = new Subject<boolean>();
   private tasks: Task[];
   private dbPromise: Promise<IDBPDatabase>;
   isCheckedModeFlag = false;
@@ -180,5 +181,10 @@ export class TasksService {
 
   inputChanged(inputValue: string): void {
     this.searchInput.next(inputValue);
+  }
+
+  darkModeChange(isDarkMode: boolean): void {
+    localStorage.setItem('isDarkMode', isDarkMode.toString());
+    this.isDarkModeChange.next(isDarkMode);
   }
 }
