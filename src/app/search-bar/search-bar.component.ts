@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
+import { Subject, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,6 +13,6 @@ export class SearchBarComponent {
   constructor(private tasksService: TasksService) {}
 
   onInputChange(): void {
-    this.tasksService.filterTasks(this.inputValue);
+    this.tasksService.inputChanged(this.inputValue);
   }
 }

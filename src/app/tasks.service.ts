@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { IDBPDatabase, openDB } from 'idb';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { Task } from './task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
   tasksChanged = new BehaviorSubject<Task[]>([]);
+  searchInput = new Subject<string>();
   private tasks: Task[];
   private dbPromise: Promise<IDBPDatabase>;
   isCheckedModeFlag = false;
@@ -175,5 +176,9 @@ export class TasksService {
     });
 
     this.tasksChanged.next(filterTasks);
+  }
+
+  inputChanged(inputValue: string): void {
+    this.searchInput.next(inputValue);
   }
 }
