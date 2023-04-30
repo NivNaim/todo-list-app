@@ -11,7 +11,7 @@ export class SearchBarComponent {
 
   constructor(private tasksService: TasksService) {}
 
-  onInputChange() {
-    this.tasksService.filterTasksByInput(this.inputValue);
+  onInputChange(): void {
+    this.tasksService.filterTasks(this.inputValue);
   }
 }

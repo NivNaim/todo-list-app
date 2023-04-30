@@ -14,7 +14,7 @@ export class CompletedTasksComponent implements OnInit, OnDestroy {
 
   constructor(private tasksService: TasksService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscription = this.tasksService.tasksChanged.subscribe(
       (tasks: Task[]) => {
         this.tasks = tasks.filter((task) => task.isCompleted);
@@ -22,11 +22,11 @@ export class CompletedTasksComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  onChangeToUncompleted(taskId: string) {
+  onChangeToUncompleted(taskId: string): void {
     this.subscription = this.tasksService.tasksChanged
       .pipe(take(1))
       .subscribe((tasks: Task[]) => {
