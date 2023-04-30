@@ -14,22 +14,26 @@ export class FooterComponent {
 
   constructor(public tasksService: TasksService, private router: Router) {}
 
-  onMarkAsComplete() {
+  onMarkAsComplete(): void {
     this.tasksService.tasksChanged.subscribe((tasks: Task[]) => {
       this.tasksService.markAsComplete();
     });
   }
 
-  onDeleteTasks() {
-    this.tasksService.tasksChanged.subscribe((tasks: Task[]) => {
-      const idsToDelete = tasks
-        .filter((task) => task.isChecked)
-        .map((task) => task.id);
-      this.tasksService.deleteTasks(idsToDelete);
-    });
+  onDeleteTasks(): void {
+    this.subscription = this.tasksService.tasksChanged.subscribe(
+      (tasks: Task[]) => {
+        const idsToDelete = tasks
+          .filter((task) => task.isChecked)
+          .map((task) => task.id);
+        this.tasksService.deleteTasks(idsToDelete).then(() => {
+          this.subscription.unsubscribe();
+        });
+      }
+    );
   }
 
-  onAddTask() {
+  onAddTask(): void {
     this.router.navigate(['/add-todo']);
   }
 }

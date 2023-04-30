@@ -13,14 +13,14 @@ export class AddTaskComponent implements OnInit {
 
   constructor(private router: Router, private tasksService: TasksService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.addTaskForm = new FormGroup({
       title: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
     });
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit(form: FormGroup): void {
     const title = form.value.title;
     const date = form.value.date;
     this.tasksService.addTask(title, date);

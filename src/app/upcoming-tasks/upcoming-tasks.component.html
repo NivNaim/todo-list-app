@@ -1,7 +1,7 @@
 <div class="todos-container">
   <header>Upcoming</header>
   <main>
-    <div class="tasks-list">
+    <div class="tasks-list" *ngIf="!isLoading">
       <div class="task-container" *ngFor="let task of tasks">
         <input
           type="checkbox"
@@ -13,6 +13,7 @@
         </div>
       </div>
     </div>
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
   </main>
   <app-footer></app-footer>
 </div>
