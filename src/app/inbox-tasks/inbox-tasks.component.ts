@@ -13,7 +13,7 @@ export class InboxTasksComponent implements OnInit, OnDestroy {
 
   constructor(private tasksService: TasksService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscription = this.tasksService.tasksChanged.subscribe(
       (tasks: Task[]) => {
         this.tasksService.resetTask();
@@ -22,11 +22,11 @@ export class InboxTasksComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  onSelectTask(isChecked: boolean, taskId: string) {
+  onSelectTask(isChecked: boolean, taskId: string): void {
     this.tasksService.selectTask(isChecked, taskId);
   }
 }
