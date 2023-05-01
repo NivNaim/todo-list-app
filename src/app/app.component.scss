@@ -4,10 +4,6 @@
   position: absolute;
   top: 8vh;
   left: 8vh;
-  background-color: #fff;
+  background-color: var(--bg-color);
   border-top-left-radius: 8px;
-}
-
-#dark-mode {
-  background-color: #333;
 }

@@ -18,10 +18,10 @@
     justify-content: space-around;
 
     .active {
-      color: #1b77ff;
+      color: var(--accent-color);
 
       a {
-        color: #1b77ff;
+        color: var(--accent-color);
       }
     }
 
@@ -30,16 +30,16 @@
       gap: 3vh;
       font-size: 18px;
 
-      &:hover,
-      &:hover a {
-        color: #1b77ff;
-        cursor: pointer;
-      }
-
+      &,
       a {
-        color: #000;
+        color: var(--text-color);
         text-decoration: none;
         font-weight: bold;
+
+        &:hover {
+          color: var(--accent-color);
+          cursor: pointer;
+        }
       }
     }
   }
