@@ -42,6 +42,10 @@ body {
         gap: 2vh;
         align-items: center;
 
+        p {
+          margin: 0;
+        }
+
         input[type="checkbox"] {
           transform: scale(1.4);
           cursor: pointer;
@@ -78,4 +82,22 @@ button {
   &:disabled {
     cursor: not-allowed;
   }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
