@@ -1,4 +1,12 @@
 .completed-task-container {
   display: flex;
   justify-content: flex-start;
+
+  button {
+    background-color: var(--bg-color);
+
+    .fa-trash {
+      color: red;
+    }
+  }
 }

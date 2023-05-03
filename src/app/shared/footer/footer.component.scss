@@ -6,11 +6,11 @@ footer {
     font-size: 22px;
 
     .fa-plus {
-      color: #1b77ff;
+      color: var(--accent-color);
     }
 
     &:hover {
-      color: #1b77ff;
+      color: var(--accent-color);
     }
   }
 

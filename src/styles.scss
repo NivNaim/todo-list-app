@@ -16,6 +16,12 @@
 #dark-mode {
   --text-color: #eee;
   --bg-color: #121212;
+
+  footer {
+    button {
+      --bg-color: #fff;
+    }
+  }
 }
 
 body {
@@ -92,7 +98,7 @@ button {
   border: none;
   gap: 1vh;
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--bg-color);
 
   &:disabled {
     cursor: not-allowed;

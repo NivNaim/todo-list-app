@@ -23,7 +23,7 @@
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
       outline: none;
-      box-shadow: 0 0 0 2px #1b77ff;
+      box-shadow: 0 0 0 2px var(--accent-color);
     }
 
     input {
@@ -49,7 +49,7 @@
       font-size: 24px;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
-      color: #1b77ff;
+      color: var(--accent-color);
       background-color: #ebeff6;
       padding: 0 2vh;
 
